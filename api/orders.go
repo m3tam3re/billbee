@@ -75,7 +75,6 @@ func (o Order) CreateOrder(shopId string) error {
 	}
 	endpoint = "/orders?shopId=" + shopId
 	body, err := json.Marshal(o)
-	fmt.Println(string(body))
 	resp, err := startRequest("POST", endpoint, body)
 	if err != nil {
 		return fmt.Errorf("Could not execute the request: %s", err)
@@ -84,5 +83,6 @@ func (o Order) CreateOrder(shopId string) error {
 	if err != nil {
 		return fmt.Errorf("Could not create order: %s", err)
 	}
+	// TODO give a useful return | response?
 	return nil
 }
