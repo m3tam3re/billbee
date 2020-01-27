@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+// Last Id: 58
+
+package api;
+
+message Order {
+  bool AcceptLossOfReturnRight = 1;
+  string Id = 50;
+  string OrderNumber = 2;
+  int32 State = 3;
+  int32 VatMode = 4;
+  string CreatedAt = 5;
+  string ConfirmedAt = 6;
+  string ShippedAt = 51;
+  string PayedAt = 52;
+  string SellerComment = 53;
+  InvoiceAddress InvoiceAddress = 7;
+  ShippingAddress ShippingAddress = 8;
+  float ShippingCost = 54;
+  int32 PaymentMethod = 9;
+  repeated OrderItem OrderItems = 49;
+  Customer Customer = 57;
+}
+
+message ShippingAddress {
+  string Company = 10;
+  string Street = 11;
+  string HouseNumber = 12;
+  string Line2 = 13;
+  string Line3 = 14;
+  string City = 15;
+  string Zip = 16;
+  string State = 17;
+  string Country = 18;
+  string CountryISO2 = 19;
+  string FirstName = 20;
+  string LastName = 21;
+  string Phone = 22;
+  string Email = 23;
+}
+
+message InvoiceAddress {
+  string Company = 24;
+  string Street = 25;
+  string HouseNumber = 26;
+  string Line2 = 27;
+  string Line3 = 28;
+  string City = 29;
+  string Zip = 30;
+  string State = 31;
+  string Country = 32;
+  string CountryISO2 = 33;
+  string FirstName = 34;
+  string LastName = 35;
+  string Phone = 36;
+  string Email = 37;
+}
+
+message Shipment {
+  string ShippingId = 38;
+  string OrderId = 39;
+  string Comment = 40;
+  int32 ShippingProviderId = 41;
+  int32 ShippingProviderProductId = 42;
+  int32 CarrierId = 43;
+}
+
+message OrderItem {
+  Product Product = 44;
+  int32 Quantity = 45;
+  float TotalPrice = 46;
+  float Discount = 55;
+}
+
+message Product {
+  string SKU = 47;
+  string EAN = 48;
+}
+
+message Customer {
+  int32 Id = 56;
+  int32 Number = 58;
+}

@@ -1,0 +1,17 @@
+order:
+  "OrderNumber": "2"
+  "OrderDate": "3"
+  "PaymentMethod": "22"
+  "ShippingAddress":
+    "Company": ""
+    "LastName": "7"
+    "Street": "8"
+    "Line2": "9"
+    "City": "10"
+    "Zip": "12"
+    "Country": "13"
+  "OrderItems":
+    "Product":
+      "SKU": "1"
+    "Quantity": "2"
+    "TotalPrice": "3" 

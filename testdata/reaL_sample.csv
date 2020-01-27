@@ -1,0 +1,4 @@
+customer_order_id;fulfilment_order_id;item_title;gtin;sku;price;amount;title;first_name;last_name;company_name;street;house_number;zip;city;country;phone;email;shipping_details;date_created;delivery_time_expires
+MX9L1S4;123456;"Musterartikel";4310000000050;45678;24,5;1;Herr;Max;Mustermann;;Musterstrasse;12;99999;Musterstadt;DE;016012345678;max@muster.de;c/o Familie Musterfrau;"2019-02-19 08:57:50";"2019-02-22 23:59:59"
+MX9L1S4;123456;"Musterartikel";4310000000051;45678;24,5;1;Herr;Max;Mustermann;;Musterstrasse;12;99999;Musterstadt;DE;016012345678;max@muster.de;c/o Familie Musterfrau;"2019-02-19 08:57:50";"2019-02-22 23:59:59"
+MFH783U;345678;"Musterartikel";4510000000052;56789;113,2;1;Frau;Maxi;Musterfrau;;Musterfraustrasse;45;66666;Musterfraustadt;DE;;;c/o Familie Musterfrau;"2019-02-15 18:57:50";"2019-02-25 23:59:59"
