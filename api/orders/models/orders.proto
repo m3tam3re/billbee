@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-// Last Id: 58
+// Last Id: 61
 
-package api;
+package orders;
 
 message Order {
   bool AcceptLossOfReturnRight = 1;
@@ -15,11 +15,11 @@ message Order {
   string ShippedAt = 51;
   string PayedAt = 52;
   string SellerComment = 53;
-  InvoiceAddress InvoiceAddress = 7;
-  ShippingAddress ShippingAddress = 8;
+  InvoiceAddress invoiceAddress = 7;
+  ShippingAddress shippingAddress = 8;
   float ShippingCost = 54;
   int32 PaymentMethod = 9;
-  repeated OrderItem OrderItems = 49;
+  repeated OrderItem orderItems = 49;
   Customer Customer = 57;
 }
 
@@ -67,18 +67,19 @@ message Shipment {
 }
 
 message OrderItem {
-  Product Product = 44;
-  int32 Quantity = 45;
+  Product product = 44;
+  float Quantity = 45;
   float TotalPrice = 46;
   float Discount = 55;
-}
-
-message Product {
-  string SKU = 47;
-  string EAN = 48;
 }
 
 message Customer {
   int32 Id = 56;
   int32 Number = 58;
+}
+
+message Product {
+  string SKU = 59;
+  string EAN = 60; 
+  string Title = 61;
 }

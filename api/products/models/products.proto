@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+// Last Id: 5
+
+package products;
+
+message Product {
+  string SKU = 1;
+  string EAN = 2; 
+  message Title {
+    string Text = 3;
+    string LanguageCode = 4;
+  }
+  repeated Title title = 5;
+}

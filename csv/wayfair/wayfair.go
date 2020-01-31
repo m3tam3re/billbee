@@ -2,11 +2,11 @@ package wayfair
 
 import (
 	"fmt"
+	"github.com/m3tam3re/billbee/api/orders"
+	"github.com/m3tam3re/csvhelper"
+	"github.com/m3tam3re/errors"
 	"github.com/spf13/viper"
 	"strconv"
-
-	"github.com/m3tam3re/billbee/api"
-	"github.com/m3tam3re/csvhelper"
 )
 
 // CreateOrder() will take an absolute path to a csv file and will create
@@ -15,15 +15,18 @@ import (
 // from the Wayfair Extranet will not be working
 //
 // This function uses a yaml configuration file. Please hava a look at config.yaml.
-func CreateOrder(file string) (*api.Order, error) {
+func CreateOrder(file string) (*orders.Order, error) {
+	const op errors.Op = "CreateOrder()"
+	const path errors.Path = "billbee/csv/wayfair/wayfair.go"
+
 	viper.SetConfigName("config")
 	viper.AddConfigPath(".")
 	viper.SetConfigType("yaml")
 	err := viper.ReadInConfig()
 	if err != nil {
-		return nil, fmt.Errorf("Could not read configuration: %s", err)
+		return nil, errors.E(errors.NotExist, op, path, err)
 	}
-	order := api.Order{}
+	order := orders.Order{}
 	csv, err := csvhelper.GetLines(file, '|', false)
 	ln := 0
 	for _, line := range csv {
@@ -35,20 +38,20 @@ func CreateOrder(file string) (*api.Order, error) {
 			order.PaymentMethod = viper.GetInt32("order.PaymentMethod")
 			if order.OrderNumber[:2] == "UK" {
 				order.VatMode = 2
-				order.Customer = &api.Customer{
+				order.Customer = &orders.Customer{
 					Id:     73771437,
 					Number: 293,
 				}
 			}
 			if order.OrderNumber[:2] == "DE" {
 				order.VatMode = 0
-				order.Customer = &api.Customer{
+				order.Customer = &orders.Customer{
 					Id:     73771431,
 					Number: 287,
 				}
 			}
 
-			order.ShippingAddress = &api.ShippingAddress{
+			order.ShippingAddress = &orders.ShippingAddress{
 				LastName:    line[viper.GetString("order.ShippingAddress.LastName")],
 				Street:      line[viper.GetString("order.ShippingAddress.Street")],
 				Line2:       line[viper.GetString("order.ShippingAddress.Line2")],
@@ -70,11 +73,11 @@ func CreateOrder(file string) (*api.Order, error) {
 			if err != nil {
 				return nil, fmt.Errorf("Could not convert TotalPrice to floar: %s", err)
 			}
-			order.OrderItems = append(order.OrderItems, &api.OrderItem{
-				Product: &api.Product{
+			order.OrderItems = append(order.OrderItems, &orders.OrderItem{
+				Product: &orders.Product{
 					SKU: line[viper.GetString("order.OrderItems.Product.SKU")],
 				},
-				Quantity:   int32(quantity),
+				Quantity:   float32(quantity),
 				TotalPrice: float32(float64(quantity)*price) * 1.19, // add Tax to product
 			})
 		}

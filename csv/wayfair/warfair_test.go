@@ -1,22 +1,22 @@
 package wayfair
 
 import (
-	"github.com/m3tam3re/billbee/api"
+	"github.com/m3tam3re/billbee/api/orders"
 	"reflect"
 	"testing"
 )
 
 func TestCreateOrder(t *testing.T) {
-	want := &api.Order{
+	want := &orders.Order{
 		OrderNumber:   "UK12345678",
-		CreatedAt:     "2019-10-18",
+		CreatedAt:     "2020-01-18",
 		PaymentMethod: 22,
 		VatMode:       2,
-		Customer: &api.Customer{
+		Customer: &orders.Customer{
 			Id:     73771437,
 			Number: 293,
 		},
-		ShippingAddress: &api.ShippingAddress{
+		ShippingAddress: &orders.ShippingAddress{
 			LastName:    "Max Mustermann",
 			Street:      "1 Muster Street",
 			Line2:       "This is line2",
@@ -25,16 +25,16 @@ func TestCreateOrder(t *testing.T) {
 			Country:     "GB",
 			CountryISO2: "GB",
 		},
-		OrderItems: []*api.OrderItem{
+		OrderItems: []*orders.OrderItem{
 			{
-				Product: &api.Product{
+				Product: &orders.Product{
 					SKU: "glamour-g_120x80-1-FG",
 				},
 				Quantity:   1,
 				TotalPrice: 112.9905,
 			},
 			{
-				Product: &api.Product{
+				Product: &orders.Product{
 					SKU: "weltkarte-graphit-g_120x80-1-FG",
 				},
 				Quantity:   2,

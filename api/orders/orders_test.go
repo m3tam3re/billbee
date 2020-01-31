@@ -1,16 +1,17 @@
-package api
+package orders
 
 import (
-	"fmt"
 	"os"
 	"testing"
 	"time"
+
+	"github.com/m3tam3re/billbee/api"
 )
 
 var shopId string = "69659"
 
 func TestStartRequest(t *testing.T) {
-	resp, err := startRequest("GET", "orders", nil)
+	resp, err := api.StartRequest("GET", "orders", nil)
 	if err != nil {
 		t.Errorf("Unexpected Error: %s", err)
 	}
@@ -19,14 +20,10 @@ func TestStartRequest(t *testing.T) {
 	}
 }
 
-func TestOrder(t *testing.T) {
-	order := Order{}
-	fmt.Println(order)
-}
-
 func TestByExternalRef(t *testing.T) {
 	o := Order{}
 	err := o.ByExternalRef("FRR0815")
+	t.Log(o)
 	if err != nil {
 		t.Errorf("o.ByExternalRef(\"FRR0815\") failed | Error: %s", err)
 	}
@@ -86,7 +83,7 @@ func TestCreateOrder(t *testing.T) {
 					SKU: "weltkarte-graphit-kork-l_120x80-1-S",
 					EAN: "",
 				},
-				Quantity:   2,
+				Quantity:   2.0,
 				TotalPrice: 44.66,
 			},
 			{
@@ -103,7 +100,7 @@ func TestCreateOrder(t *testing.T) {
 			Number: 602,
 		},
 	}
-	err := o.CreateOrder(shopId)
+	err := o.Create(shopId)
 	if err != nil {
 		t.Errorf("o.CreateOrder() failed | Error: %s", err)
 	}
