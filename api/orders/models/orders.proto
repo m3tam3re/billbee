@@ -6,84 +6,84 @@ package orders;
 
 message Order {
   bool AcceptLossOfReturnRight = 1;
-  string Id = 50;
-  string OrderNumber = 2;
-  int32 State = 3;
-  int32 VatMode = 4;
-  string CreatedAt = 5;
-  string ConfirmedAt = 6;
-  string ShippedAt = 51;
-  string PayedAt = 52;
-  string SellerComment = 53;
-  InvoiceAddress invoiceAddress = 7;
-  ShippingAddress shippingAddress = 8;
-  float ShippingCost = 54;
-  int32 PaymentMethod = 9;
-  repeated OrderItem orderItems = 49;
-  Customer Customer = 57;
+  string Id = 2;
+  string OrderNumber = 3;
+  int32 State = 4;
+  int32 VatMode = 5;
+  string CreatedAt = 6;
+  string ConfirmedAt = 7;
+  string ShippedAt = 8;
+  string PayedAt = 9;
+  string SellerComment = 10;
+  InvoiceAddress invoiceAddress = 11;
+  ShippingAddress shippingAddress = 12;
+  float ShippingCost = 13;
+  int32 PaymentMethod = 14;
+  repeated OrderItem orderItems = 15;
+  Customer Customer = 16;
 }
 
 message ShippingAddress {
-  string Company = 10;
-  string Street = 11;
-  string HouseNumber = 12;
-  string Line2 = 13;
-  string Line3 = 14;
-  string City = 15;
-  string Zip = 16;
-  string State = 17;
-  string Country = 18;
-  string CountryISO2 = 19;
-  string FirstName = 20;
-  string LastName = 21;
-  string Phone = 22;
-  string Email = 23;
+  string Company = 1;
+  string Street = 2;
+  string HouseNumber = 3;
+  string Line2 = 4;
+  string Line3 = 5;
+  string City = 6;
+  string Zip = 7;
+  string State = 8;
+  string Country = 9;
+  string CountryISO2 = 10;
+  string FirstName = 11;
+  string LastName = 12;
+  string Phone = 13;
+  string Email = 14;
 }
 
 message InvoiceAddress {
-  string Company = 24;
-  string Street = 25;
-  string HouseNumber = 26;
-  string Line2 = 27;
-  string Line3 = 28;
-  string City = 29;
-  string Zip = 30;
-  string State = 31;
-  string Country = 32;
-  string CountryISO2 = 33;
-  string FirstName = 34;
-  string LastName = 35;
-  string Phone = 36;
-  string Email = 37;
+  string Company = 1;
+  string Street = 2;
+  string HouseNumber = 3;
+  string Line2 = 4;
+  string Line3 = 5;
+  string City = 6;
+  string Zip = 7;
+  string State = 8;
+  string Country = 9;
+  string CountryISO2 = 10;
+  string FirstName = 11;
+  string LastName = 12;
+  string Phone = 13;
+  string Email = 14;
 }
 
 message Shipment {
-  string ShippingId = 38;
-  string OrderId = 39;
-  string Comment = 40;
-  int32 ShippingProviderId = 41;
-  int32 ShippingProviderProductId = 42;
-  int32 CarrierId = 43;
+  string ShippingId = 1;
+  string OrderId = 2;
+  string Comment = 3;
+  int32 ShippingProviderId = 4;
+  int32 ShippingProviderProductId = 5;
+  int32 CarrierId = 6;
 }
 
 message OrderItem {
-  Product product = 44;
-  float Quantity = 45;
-  float TotalPrice = 46;
-  float Discount = 55;
+  Product product = 1;
+  float Quantity = 2;
+  float TotalPrice = 3;
+  float Discount = 4;
 }
 
 message Customer {
-  int64 Id = 56;
-  int32 Number = 58;
-  int32 type = 62;
-  string Name = 63;
-  string Email = 64;
-  string Tel1 = 65;
+  int64 Id = 1;
+  int32 Number = 2;
+  int32 type = 3;
+  string Name = 4;
+  string Email = 5;
+  string Tel1 = 6;
 }
 
 message Product {
-  string SKU = 59;
-  string EAN = 60; 
-  string Title = 61;
+  string SKU = 1;
+  string EAN = 2; 
+  string Title = 3;
 }

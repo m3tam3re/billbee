@@ -33,7 +33,7 @@ func (o Order) ByExternalRef(ref string) error {
 	resp, err := api.StartRequest("GET", endpoint, nil)
 	defer resp.Body.Close()
 	if resp.StatusCode == 404 {
-		return errors.E(errors.NotExist, op, path, err, fmt.Sprintf("statuscode should be 200, got: %v", resp.StatusCode))
+		return errors.E(errors.NotExist, op, path, fmt.Errorf("%s", resp.Status), fmt.Sprintf("statuscode should be 200, got: %d", resp.StatusCode))
 	}
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
