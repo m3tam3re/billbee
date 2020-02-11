@@ -9,7 +9,7 @@ import (
 	"net/http"
 )
 
-const path errors.Path = "github.com/m3tam3re/billbee/api/products/products.go"
+const path errors.Path = "github.com/m3tam3re/billbee/api/products"
 
 // GetOne(prod string) will lookup a single product in the Billbee API and store the
 // datafields of the response into the Product struct. Fields not included in the struct
@@ -25,7 +25,7 @@ func (p *Product) GetOne(prod string) error {
 		return errors.E(errors.Internal, op, path, err, "error while sending request")
 	}
 	if resp.StatusCode != http.StatusOK {
-		return errors.E(errors.NotExist, op, path, err, fmt.Sprintf("statuscode should be 200, got: %v", resp.StatusCode))
+		return errors.E(errors.NotExist, op, path, fmt.Sprintf("statuscode should be 200, got: %v", resp.StatusCode))
 	}
 	body, err := ioutil.ReadAll(resp.Body)
 	var respmap map[string]json.RawMessage

@@ -28,17 +28,17 @@ func TestCreateOrder(t *testing.T) {
 		OrderItems: []*orders.OrderItem{
 			{
 				Product: &orders.Product{
-					SKU: "glamour-g_120x80-1-FG",
+					Title: "glamour-g_120x80-1-FG",
 				},
 				Quantity:   1,
-				TotalPrice: 112.9905,
+				TotalPrice: 112.99049,
 			},
 			{
 				Product: &orders.Product{
 					SKU: "weltkarte-graphit-g_120x80-1-FG",
 				},
 				Quantity:   2,
-				TotalPrice: 9.401001,
+				TotalPrice: 9.401,
 			},
 		},
 	}

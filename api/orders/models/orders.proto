@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-// Last Id: 61
+// Last Id: 65
 
 package orders;
 
@@ -74,8 +74,12 @@ message OrderItem {
 }
 
 message Customer {
-  int32 Id = 56;
+  int64 Id = 56;
   int32 Number = 58;
+  int32 type = 62;
+  string Name = 63;
+  string Email = 64;
+  string Tel1 = 65;
 }
 
 message Product {

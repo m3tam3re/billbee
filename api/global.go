@@ -17,7 +17,7 @@ func StartRequest(method string, endpoint string, body []byte) (*http.Response, 
 	const op errors.Op = "func: startRequest"
 
 	client := http.Client{
-		Timeout: time.Second * 30,
+		Timeout: time.Second * 120,
 	}
 	req, err := http.NewRequest(method, os.Getenv("BILBBE_API_URL")+endpoint, bytes.NewBuffer(body))
 	if err != nil {

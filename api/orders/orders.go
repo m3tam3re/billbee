@@ -22,7 +22,7 @@ import (
 	"github.com/m3tam3re/errors"
 )
 
-const path errors.Path = "github.com/m3tam3re/billbee/api/orders/orders.go"
+const path errors.Path = "github.com/m3tam3re/billbee/api/orders"
 
 // ByExternalRef(ref string) consumes a string / external order reference.
 // It will request the given order reference, store it in the Order struct.
