@@ -2,11 +2,10 @@ package api
 
 import (
 	"bytes"
+	"github.com/m3tam3re/errors"
 	"net/http"
 	"os"
 	"time"
-
-	"github.com/m3tam3re/errors"
 )
 
 const path errors.Path = "github.com/m3tam3re/billbee/api/global.go"
