@@ -11,11 +11,11 @@ func TestCreateOrder(t *testing.T) {
 		PaymentMethod: 3,
 		VatMode:       0,
 		Customer: &orders.Customer{
-			Id:     "73771747",
+			Id:     73771747,
 			Name:   "Weltkarten24.com",
 			Email:  "peter.gruetzner@weltkarten24.com",
 			Tel1:   "17621230980",
-			Number: "602",
+			Number: 602,
 			Type:   0,
 		},
 		ShippingAddress: &orders.ShippingAddress{
