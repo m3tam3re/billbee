@@ -1,4 +1,4 @@
-// package billbeeapi is intended to deliver basic operations with the Bilbee API. For more
+// package billbee-api is intended to deliver basic operations with the Billbee API. For more
 // information on Billbee visit https://www.bilbee.io
 //
 // Official documentation: https://app.billbee.io//swagger/ui/index#!/
@@ -31,6 +31,9 @@ func (o Order) ByExternalRef(ref string) error {
 
 	endpoint := "/orders/findbyextref/" + ref
 	resp, err := api.StartRequest("GET", endpoint, nil)
+	if err != nil {
+		return errors.E(errors.Internal, op, path, fmt.Errorf("could not execute request: %s", err))
+	}
 	defer resp.Body.Close()
 	if resp.StatusCode == 404 {
 		return errors.E(errors.NotExist, op, path, fmt.Errorf("%s", resp.Status), fmt.Sprintf("statuscode should be 200, got: %d", resp.StatusCode))
