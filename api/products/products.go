@@ -20,6 +20,9 @@ func (p *Product) GetOne(prod string) error {
 
 	endpoint := "products/" + prod + "?lookupBy=sku"
 	resp, err := api.StartRequest("GET", endpoint, nil)
+	if err != nil {
+		return errors.E(errors.Internal, op, path, fmt.Errorf("could not execute request: %s", err))
+	}
 	defer resp.Body.Close()
 	if err != nil {
 		return errors.E(errors.Internal, op, path, err, "error while sending request")
