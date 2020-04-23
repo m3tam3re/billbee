@@ -12,4 +12,5 @@ message Product {
     string LanguageCode = 4;
   }
   repeated Title title = 5;
+  float Price = 6;
 }
