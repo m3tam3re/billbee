@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"github.com/m3tam3re/errors"
 	"net/http"
+	"net/url"
 	"os"
 	"time"
 )
@@ -14,11 +15,18 @@ const path errors.Path = "github.com/m3tam3re/billbee/api/global.go"
 // to a http request.
 func StartRequest(method string, endpoint string, body []byte) (*http.Response, error) {
 	const op errors.Op = "func: startRequest"
-
+	baseUrl := os.Getenv("BILBBE_API_URL")
+	if (os.Getenv("BILBBE_API_URL"))[len(os.Getenv("BILBBE_API_URL"))-1:] == endpoint[:1] {
+		baseUrl = os.Getenv("BILBBE_API_URL")[:len(os.Getenv("BILBBE_API_URL"))-1]
+	}
 	client := http.Client{
 		Timeout: time.Second * 120,
 	}
-	req, err := http.NewRequest(method, os.Getenv("BILBBE_API_URL")+endpoint, bytes.NewBuffer(body))
+	reqUrl, err := url.Parse(baseUrl + endpoint)
+	if err != nil {
+		return nil, errors.E(errors.Internal, op, path, err, "could not parse URL")
+	}
+	req, err := http.NewRequest(method, reqUrl.String(), bytes.NewBuffer(body))
 	if err != nil {
 		return nil, errors.E(errors.Internal, op, path, err, "error building request")
 	}
