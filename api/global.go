@@ -22,7 +22,7 @@ func StartRequest(method string, endpoint string, body []byte) (*http.Response, 
 	client := http.Client{
 		Timeout: time.Second * 120,
 	}
-	reqUrl, err := url.Parse(baseUrl + endpoint)
+	reqUrl, err := url.ParseRequestURI(baseUrl + endpoint)
 	if err != nil {
 		return nil, errors.E(errors.Internal, op, path, err, "could not parse URL")
 	}
